@@ -1,0 +1,7 @@
+@layer utilities {
+
+    details {
+        @apply my-4 p-4 rounded-md bg-layout-200 text-layout-800 dark:bg-layout-800 dark:text-layout-200;
+    }
+
+}

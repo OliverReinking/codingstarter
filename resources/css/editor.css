@@ -1,0 +1,52 @@
+@layer utilities {
+    .editor {
+        @apply mt-1 mb-4 p-1 flex flex-col bg-layout-50 text-layout-900 rounded-lg dark:bg-layout-900 dark:text-layout-50;
+    }
+
+    .editor__header {
+        @apply flex w-full mt-4 p-4 border border-layout-300 shadow-md bg-layout-200 text-layout-900 rounded-lg dark:bg-layout-800 dark:text-layout-50;
+    }
+
+
+    .editor__error {
+        @apply flex w-full mt-4 p-4 border border-layout-300 shadow-md bg-red-100 text-red-900 text-sm rounded-md;
+    }
+
+    .editor_menubar {
+        @apply flex flex-wrap justify-start items-center space-x-2;
+    }
+
+    .editor_menubar__divider {
+        @apply bg-layout-400 h-8 my-1;
+        width: 1px;
+    }
+
+    .editor_menubar__button:first-child {
+        @apply ml-2;
+    }
+
+    .editor_menubar__button {
+        @apply flex items-center justify-center w-8 h-8 bg-layout-300 text-layout-900 rounded-lg my-1;
+    }
+
+    .editor_menubar__button.is-active {
+        @apply bg-layout-500 text-layout-900;
+    }
+
+    .editor_menubar__button:hover {
+        @apply bg-layout-900 text-layout-300;
+    }
+
+    .editor_menubar__button:disabled {
+        @apply bg-layout-100 text-layout-200;
+    }
+
+    .editor_menubar__button:disabled:hover {
+        @apply cursor-not-allowed bg-transparent;
+    }
+
+    .editor_menubar__button:disabled:focus {
+        @apply cursor-not-allowed bg-transparent;
+    }
+
+}

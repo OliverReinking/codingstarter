@@ -1,0 +1,9 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+@import 'cookie_consent.css';
+@import 'editor.css';
+@import 'markdown.css';
+@import 'table.css';
+@import 'tippy.css';

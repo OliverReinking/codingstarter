@@ -1,0 +1,105 @@
+@layer utilities {
+    .cookie-container {
+        @apply my-4 bg-layout-100 text-layout-900 dark:bg-layout-900 dark:text-white rounded-lg;
+    }
+
+    .cookie-consent-title {
+        @apply mt-8 font-title text-3xl tracking-widest font-bold break-words leading-snug;
+    }
+
+    @screen md {
+        .cookie-consent-title {
+            @apply text-4xl leading-snug;
+        }
+    }
+
+    @screen lg {
+        .cookie-consent-title {
+            @apply text-5xl leading-normal;
+        }
+    }
+
+    .cookie-consent-message {
+        @apply mt-8 text-base tracking-widest break-words leading-snug;
+
+    }
+
+    @screen md {
+        .cookie-consent-message {
+            @apply text-lg leading-snug;
+        }
+    }
+
+    .cookie-consent-link {
+        @apply inline-block text-center px-3 py-1 text-base tracking-widest break-words leading-snug rounded-lg font-normal transition duration-500 ease-in-out bg-layout-200 text-layout-900;
+    }
+
+    @screen md {
+        .cookie-consent-link {
+            @apply text-lg leading-snug;
+        }
+    }
+
+    .cookie-consent-link:hover {
+        @apply text-layout-100 bg-layout-500 outline-none;
+    }
+
+    .cookie-consent-link:focus {
+        @apply text-layout-200 bg-layout-600 outline-none;
+    }
+
+    .btn-cookie-consent {
+        @apply inline-block px-4 py-2 border border-transparent text-base leading-normal font-medium rounded-md shadow-lg transition duration-500 ease-in-out;
+    }
+
+    @screen lg {
+        .btn-cookie-consent {
+            @apply py-3 px-6 text-lg;
+        }
+    }
+
+    .btn-cookie-consent:hover {
+        @apply outline-none;
+    }
+
+    .btn-cookie-consent:focus {
+        @apply outline-none;
+    }
+
+    .btn-cookie-consent-change {
+        @apply text-layout-700 bg-layout-200;
+    }
+
+    .btn-cookie-consent-change:hover {
+        @apply text-layout-900 bg-layout-400 outline-none;
+    }
+
+    .btn-cookie-consent-change:focus {
+        @apply text-layout-900 bg-layout-400 outline-none;
+    }
+
+    .btn-cookie-consent-decline {
+        @apply text-layout-700 bg-red-200;
+    }
+
+    .btn-cookie-consent-decline:hover {
+        @apply text-layout-900 bg-red-500 outline-none;
+    }
+
+    .btn-cookie-consent-decline:focus {
+        @apply text-layout-900 bg-red-500 outline-none;
+    }
+
+    .btn-cookie-consent-accept {
+        @apply text-layout-700 bg-green-200;
+    }
+
+    .btn-cookie-consent-accept:hover {
+        @apply text-layout-900 bg-green-500 outline-none;
+    }
+
+    .btn-cookie-consent-accept:focus {
+        @apply text-layout-900 bg-green-500 outline-none;
+    }
+
+}
