@@ -3,7 +3,7 @@ return [
     // Version
     'version' => [
         'versionnr' => '1.0.0',
-        'versionsdatum' => '16.10.2022',
+        'versionsdatum' => '01.01.2023',
     ],
     // Plattform-Daten
     'platform' => [

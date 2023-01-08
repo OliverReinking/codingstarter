@@ -70,7 +70,7 @@
             <dropdown-link v-if="$page.props.userdata.profile_photo_path">
               <img
                 class="h-8 w-8 rounded-full object-cover"
-                :src="$page.props.userdata.profile_photo_url"
+                :src="$page.props.userdata.profile_photo_path"
                 :alt="
                   $page.props.userdata.first_name +
                   ' ' +

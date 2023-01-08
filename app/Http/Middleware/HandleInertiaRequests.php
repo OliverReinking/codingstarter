@@ -101,7 +101,9 @@ class HandleInertiaRequests extends Middleware
                     $last_name = $user->last_name;
                     $email = $user->email;
                     //
-                    $profile_photo_path = $user->profile_photo_path;
+                    if ($user->profile_photo_url) {
+                        $profile_photo_path = $user->profile_photo_url;
+                    }
                     //
                     $is_admin = $user->is_admin;
                     $is_employee = $user->is_employee;

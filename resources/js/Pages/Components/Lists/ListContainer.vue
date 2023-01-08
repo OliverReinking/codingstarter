@@ -46,21 +46,18 @@
               v-if="editOn"
               class="np-dl-td-edit"
               @click.prevent="editDataRow(datarow.id)"
-              v-tippy
             >
-              <icon-edit class="w-6 h-6" />
+              <icon-edit class="w-6 h-6" v-tippy />
+              <tippy>{{ editDescription }}</tippy>
             </td>
-            <tippy>{{ editDescription }}</tippy>
-
             <td
               v-if="showOn"
               class="np-dl-td-edit"
               @click.prevent="showDataRow(datarow.id)"
-              v-tippy
             >
-              <icon-eye class="w-6 h-6" />
+              <icon-eye class="w-6 h-6" v-tippy />
+              <tippy>{{ showDescription }}</tippy>
             </td>
-            <tippy>{{ showDescription }}</tippy>
           </tr>
         </tbody>
       </table>
