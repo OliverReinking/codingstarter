@@ -37,7 +37,7 @@ class DatabaseSeeder extends Seeder
     {
         $this->call(AdminSeeder::class);
         // nur in der Testumgebung
-        $this->call(TestData::class);
+        //$this->call(TestData::class);
         // nur einmal pro Anwendung mit truncate
         $this->call(CreateWebinarImages::class);
         $this->call(WebinarData::class);

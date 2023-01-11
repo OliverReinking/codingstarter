@@ -197,6 +197,16 @@ Verzeichnis: resources/js/Pages/Components/Content
 </details>
 
 <details>
+    <summary>DisplayShortText.vue</summary>
+
+    props:
+    - content
+    - maxLength
+    - continuationSymbol
+
+</details>
+
+<details>
     <summary>DisplayYesOrNo.vue</summary>
 
     props:

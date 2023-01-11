@@ -1,8 +1,9 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
+use App\Models\Administration;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
 
 return new class extends Migration
 {
@@ -14,7 +15,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('person_companies', function (Blueprint $table) {
-            $table->bigIncrements('id')->startingValue(1000);
+            $table->bigIncrements('id')->startingValue(Administration::ADMIN_CODINGSTARTER_ID);
             //
             $table->string('person_company_number', 100)->nullable();
             //
@@ -38,7 +39,7 @@ return new class extends Migration
             $table->string('billing_address', 100)->nullable();
             $table->string('billing_address_line_2', 100)->nullable();
             $table->string('billing_street', 100)->nullable();
-            $table->integer('billing_country_id')->nullable();
+            $table->integer('billing_country_id')->nullable(1);
             $table->string('billing_postcode', 20)->nullable();
             $table->string('billing_city', 100)->nullable();
             //

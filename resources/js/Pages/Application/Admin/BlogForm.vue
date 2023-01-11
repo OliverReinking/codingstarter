@@ -59,7 +59,7 @@
           </input-container>
 
           <input-container>
-            <input-label name="blog_author_id" label="Kategorie"></input-label>
+            <input-label name="blog_category_id" label="Kategorie"></input-label>
             <input-select
               v-model="form.blog_category_id"
               :options="blog_categories"

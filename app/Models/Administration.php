@@ -13,7 +13,7 @@ class Administration extends Model
 
     protected $primaryKey = 'admin_id';
 
-    const ADMIN_CODINGSTARTER_ID = 1000;
+    const ADMIN_CODINGSTARTER_ID = 1963;
 
     // Ein Administrator (administrations) gehört zu genau einem Unternehmen (person_companies)
     public function person_company()

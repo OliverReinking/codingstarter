@@ -34,7 +34,10 @@
             {{ data.datarow.receiver_person_company_name }}
           </td>
           <td class="np-dl-td-normal">
-            <span v-html="data.datarow.message"></span>
+             <display-short-text
+              :content="data.datarow.message"
+              :max-length="100"
+            ></display-short-text>
           </td>
           <td class="np-dl-td-normal">
             <display-yes-or-no
@@ -55,6 +58,7 @@ import Breadcrumb from "@/Pages/Components/Breadcrumb.vue";
 import ListContainer from "@/Pages/Components/Lists/ListContainer.vue";
 import DisplayDate from "@/Pages/Components/Content/DisplayDate.vue";
 import DisplayYesOrNo from "@/Pages/Components/Content/DisplayYesOrNo.vue";
+import DisplayShortText from "@/Pages/Components/Content/DisplayShortText.vue";
 
 export default defineComponent({
   name: "Customer_ChatOutboxList",
@@ -65,6 +69,7 @@ export default defineComponent({
     ListContainer,
     DisplayDate,
     DisplayYesOrNo,
+    DisplayShortText,
   },
 
   props: {
