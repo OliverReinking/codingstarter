@@ -106,6 +106,7 @@
               Soll das Webinar auf der Homepage verfügbar sein?</input-checkbox
             >
           </input-container>
+
         </input-group>
 
         <input-subtitle>Webinarbild</input-subtitle>
@@ -362,6 +363,8 @@ export default defineComponent({
         event_start: this.webinar.event_start,
         description: this.webinar.description,
         access: this.webinar.access,
+        access_start: this.webinar.access_start,
+        access_moderator: this.webinar.access_moderator,
         active: this.webinar.active,
       },
     };

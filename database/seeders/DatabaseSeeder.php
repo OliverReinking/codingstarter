@@ -2,29 +2,27 @@
 
 namespace Database\Seeders;
 
-use Carbon\Carbon;
+use App\Models\Administration;
 use App\Models\Blog;
+use App\Models\BlogAuthor;
+use App\Models\BlogCategory;
+use App\Models\BlogImage;
 use App\Models\Chat;
-use App\Models\User;
+use App\Models\ChatType;
+use App\Models\ChatUserType;
 use App\Models\Company;
 use App\Models\Country;
-use App\Models\Webinar;
-use App\Models\ChatType;
 use App\Models\Customer;
-use App\Models\BlogImage;
-use App\Models\BlogAuthor;
 use App\Models\Newsletter;
-use App\Models\Salutation;
-use App\Models\BlogCategory;
-use App\Models\ChatUserType;
-use App\Models\WebinarImage;
-use App\Models\PersonCompany;
-use App\Models\Administration;
-use Illuminate\Database\Seeder;
 use App\Models\NewsletterMember;
-use Illuminate\Support\Facades\Log;
+use App\Models\PersonCompany;
+use App\Models\Salutation;
+use App\Models\User;
+use App\Models\Webinar;
+use App\Models\WebinarImage;
+use Carbon\Carbon;
+use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class DatabaseSeeder extends Seeder
 {
@@ -35,21 +33,25 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $this->call(AdminSeeder::class);
-        // nur in der Testumgebung
-        //$this->call(TestData::class);
-        // nur einmal pro Anwendung mit truncate
-        $this->call(CreateWebinarImages::class);
-        $this->call(WebinarData::class);
-        $this->call(CreateBlogCategories::class);
-        $this->call(CreateBlogImages::class);
-        $this->call(CreateBlogAuthors::class);
-        $this->call(CreateBlogWithMarkdownFormat::class);
-        $this->call(CreateChatTypes::class);
-        $this->call(CreateChatUserTypes::class);
-        $this->call(CreateCountries::class);
-        $this->call(CreateSalutations::class);
-        $this->call(NewsletterData::class);
+
+        // nur bei der ersten Initialisierung
+        if (1 == 1) {
+            $this->call(AdminSeeder::class);
+            // nur in der Testumgebung
+            //$this->call(TestData::class);
+            // nur einmal pro Anwendung mit truncate
+            $this->call(CreateWebinarImages::class);
+            $this->call(WebinarData::class);
+            $this->call(CreateBlogCategories::class);
+            $this->call(CreateBlogImages::class);
+            $this->call(CreateBlogAuthors::class);
+            $this->call(CreateBlogWithMarkdownFormat::class);
+            $this->call(CreateChatTypes::class);
+            $this->call(CreateChatUserTypes::class);
+            $this->call(CreateCountries::class);
+            $this->call(CreateSalutations::class);
+            $this->call(NewsletterData::class);
+        }
     }
 }
 
@@ -69,13 +71,19 @@ class AdminSeeder extends Seeder
             'is_customer' => true,
         ]);
         //
-        $person_company = PersonCompany::factory()->create([
+        $person_company = PersonCompany::create([
             'is_natural_person' => false,
             'name' => 'Codingjungle',
-            'contactperson_salutation_id' => 1,
+            'country_id' => Country::COUNTRY_GERMANY,
+            'contactperson_salutation_id' => Salutation::SALUTATION_MALE,
             'contactperson_last_name' => 'Oliver',
             'contactperson_first_name' => 'Reinking',
             'contactperson_email' => 'oliver@codingjungle.de',
+            'billing_address' => 'Oliver Reinking',
+            'billing_street' => 'Nordpfad 25',
+            'billing_country_id' => Country::COUNTRY_GERMANY,
+            'billing_postcode' => '66482',
+            'billing_city' => 'Zweibrücken',
         ]);
         // Create Administration
         Administration::create([
@@ -238,37 +246,37 @@ class CreateWebinarImages extends Seeder
         WebinarImage::create([
             'id' => 1,
             'name' => 'Mann am Schreibtisch',
-            'url' => '/images/webinarimages/Webinar_Mann_Schreibtisch.jpg'
+            'url' => '/images/webinarimages/Webinar_Mann_Schreibtisch.jpg',
         ]);
         // Create WebinarImage
         WebinarImage::create([
             'id' => 2,
             'name' => 'Laptops',
-            'url' => '/images/webinarimages/Webinar_Laptops.jpg'
+            'url' => '/images/webinarimages/Webinar_Laptops.jpg',
         ]);
         // Create WebinarImage
         WebinarImage::create([
             'id' => 3,
             'name' => 'Laptop A',
-            'url' => '/images/webinarimages/Webinar_Laptop_A.jpg'
+            'url' => '/images/webinarimages/Webinar_Laptop_A.jpg',
         ]);
         // Create WebinarImage
         WebinarImage::create([
             'id' => 4,
             'name' => 'Laptop B',
-            'url' => '/images/webinarimages/Webinar_Laptop_B.jpg'
+            'url' => '/images/webinarimages/Webinar_Laptop_B.jpg',
         ]);
         // Create WebinarImage
         WebinarImage::create([
             'id' => 5,
             'name' => 'Laptop C',
-            'url' => '/images/webinarimages/Webinar_Laptop_C.jpg'
+            'url' => '/images/webinarimages/Webinar_Laptop_C.jpg',
         ]);
         // Create WebinarImage
         WebinarImage::create([
             'id' => 6,
             'name' => 'Laptop D',
-            'url' => '/images/webinarimages/Webinar_Laptop_D.jpg'
+            'url' => '/images/webinarimages/Webinar_Laptop_D.jpg',
         ]);
     }
 }
@@ -305,73 +313,73 @@ class CreateBlogImages extends Seeder
         BlogImage::create([
             'id' => 1,
             'name' => 'moderne Bibliothek',
-            'url' => '/images/blogimages/Blog_Bibliothek_480x360.jpg'
+            'url' => '/images/blogimages/Blog_Bibliothek_480x360.jpg',
         ]);
         // Create BlogImage
         BlogImage::create([
             'id' => 2,
             'name' => 'Karteikartenschrank',
-            'url' => '/images/blogimages/Blog_Karteikartenschrank_480x360.jpg'
+            'url' => '/images/blogimages/Blog_Karteikartenschrank_480x360.jpg',
         ]);
         // Create BlogImage
         BlogImage::create([
             'id' => 3,
             'name' => 'Plan',
-            'url' => '/images/blogimages/Blog_Plan_480x360.jpg'
+            'url' => '/images/blogimages/Blog_Plan_480x360.jpg',
         ]);
         // Create BlogImage
         BlogImage::create([
             'id' => 4,
             'name' => 'Computerbildschirm mit Code',
-            'url' => '/images/blogimages/Blog_Screen_480x360.jpg'
+            'url' => '/images/blogimages/Blog_Screen_480x360.jpg',
         ]);
         // Create BlogImage
         BlogImage::create([
             'id' => 5,
             'name' => 'Sonne',
-            'url' => '/images/blogimages/Blog_Sonne_480x360.jpg'
+            'url' => '/images/blogimages/Blog_Sonne_480x360.jpg',
         ]);
         // Create BlogImage
         BlogImage::create([
             'id' => 6,
             'name' => 'Autobahnkreuz',
-            'url' => '/images/blogimages/Blog_Autobahnkreuz_480x360.jpg'
+            'url' => '/images/blogimages/Blog_Autobahnkreuz_480x360.jpg',
         ]);
         // Create BlogImage
         BlogImage::create([
             'id' => 7,
             'name' => 'Containerhafen',
-            'url' => '/images/blogimages/Blog_Containerhafen_480x360.jpg'
+            'url' => '/images/blogimages/Blog_Containerhafen_480x360.jpg',
         ]);
         // Create BlogImage
         BlogImage::create([
             'id' => 8,
             'name' => 'Idee',
-            'url' => '/images/blogimages/Blog_Idee_480x360.jpg'
+            'url' => '/images/blogimages/Blog_Idee_480x360.jpg',
         ]);
         // Create BlogImage
         BlogImage::create([
             'id' => 9,
             'name' => 'Posts',
-            'url' => '/images/blogimages/Blog_Posts_480x360.jpg'
+            'url' => '/images/blogimages/Blog_Posts_480x360.jpg',
         ]);
         // Create BlogImage
         BlogImage::create([
             'id' => 10,
             'name' => 'Schrankwand',
-            'url' => '/images/blogimages/Blog_Schrankwand_480x360.jpg'
+            'url' => '/images/blogimages/Blog_Schrankwand_480x360.jpg',
         ]);
         // Create BlogImage
         BlogImage::create([
             'id' => 11,
             'name' => 'Tasse',
-            'url' => '/images/blogimages/Blog_Tasse_480x360.jpg'
+            'url' => '/images/blogimages/Blog_Tasse_480x360.jpg',
         ]);
         // Create BlogImage
         BlogImage::create([
             'id' => 12,
             'name' => 'Warenlager',
-            'url' => '/images/blogimages/Blog_Warenlager_480x360.jpg'
+            'url' => '/images/blogimages/Blog_Warenlager_480x360.jpg',
         ]);
     }
 }
@@ -392,7 +400,7 @@ class CreateBlogAuthors extends Seeder
             Hier entwickelte er das erste internetbasierte Bestandsverwaltungssystem für Versicherungen.
             <br />
             Heute ist Oliver CTO bei der CFgO GmbH.
-            '
+            ',
         ]);
     }
 }
@@ -522,7 +530,10 @@ class WebinarData extends Seeder
             'event_start' => $event_start,
             'title' => 'Einführung in das Laravel-Starterpaket CodingStarter',
             'description' => $description,
-            'access' => config('app.url') . '/webinar/1',
+            'access' => 'https://meet.jit.si',
+            'access_start' => 'https://meet.jit.si',
+            'access_moderator' => 'https://meet.jit.si',
+            'active' => true,
         ]);
     }
 }
@@ -536,7 +547,7 @@ class NewsletterData extends Seeder
         Newsletter::create([
             'id' => Newsletter::Newsletter_Platform,
             'name' => 'Plattform ' . config('codingstarter.platform.name'),
-            'description' => 'In diesem Newsletter berichten wir über die Plattform ' . config('codingstarter.platform.name') . '.'
+            'description' => 'In diesem Newsletter berichten wir über die Plattform ' . config('codingstarter.platform.name') . '.',
         ]);
         //
         NewsletterMember::factory()->times(200)->create(
@@ -581,7 +592,7 @@ class TestData extends Seeder
                 $user->save();
                 //
                 Company::create([
-                    'company_id' => $person_company->id
+                    'company_id' => $person_company->id,
                 ]);
             }
             // -------------------------------------
@@ -613,7 +624,7 @@ class TestData extends Seeder
         $companyCount = Company::count();
         $companyList = Company::get()->pluck('company_id')->toArray();
         //
-        $customerList =  User::where('is_customer', true)->get();
+        $customerList = User::where('is_customer', true)->get();
         //
         foreach ($customerList as $user) {
             $zufall_company = random_int(0, $companyCount - 1);
