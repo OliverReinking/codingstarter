@@ -65,7 +65,7 @@ class AdminSeeder extends Seeder
             'last_name' => 'Reinking',
             'email' => 'admin@codingstarter.de',
             'email_verified_at' => Carbon::now(),
-            'password' => Hash::make('12345678'),
+            'password' => Hash::make('CS_2023_ollie'),
             'is_admin' => true,
             'is_employee' => true,
             'is_customer' => true,

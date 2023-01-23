@@ -21,9 +21,12 @@ return new class extends Migration
             //
             $table->string('title', 100);
             $table->text('description');
-            $table->string('access', 200);
             $table->date('event_date')->nullable();
             $table->string('event_start', 100)->nullable();
+            //
+            $table->string('access', 200);
+            $table->string('access_start', 200);
+            $table->string('access_moderator', 200);
             //
             $table->boolean('active')->default(1);
             //

@@ -115,18 +115,3 @@ export default defineComponent({
   },
 });
 </script>
-<style>
-.slide-fade-enter-active {
-  transition: all 0.8s ease-out;
-}
-
-.slide-fade-leave-active {
-  transition: all 0.8s ease-in;
-}
-
-.slide-fade-enter-from,
-.slide-fade-leave-to {
-  transform: translateX(-100%);
-  opacity: 1;
-}
-</style>

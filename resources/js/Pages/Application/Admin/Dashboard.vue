@@ -91,6 +91,21 @@
           </template>
         </navigation-card>
 
+         <navigation-card title="Version">
+          <template #icon> <icon-document-text /> </template>
+          <template #description>
+            Hier findest du alles zu den Versionen dieser Anwendung
+          </template>
+          <template #buttonOne>
+            <Link
+              :href="route('admin.version')"
+              class="flex items-center"
+            >
+              <icon-card-list class="inline-block h-5 w-5 mr-2" />zur Dokumentation
+            </Link>
+          </template>
+        </navigation-card>
+
         <navigation-card title="Posteingang">
           <template #icon>
             <icon-arrow-left-on-rectangle />
@@ -195,6 +210,7 @@ import IconUsers from "@/Pages/Components/Icons/Users.vue";
 import IconCardList from "@/Pages/Components/Icons/CardList.vue";
 import IconAddCircle from "@/Pages/Components/Icons/AddCircle.vue";
 import IconNewspaper from "@/Pages/Components/Icons/Newspaper.vue";
+import IconDocumentText from "@/Pages/Components/Icons/DocumentText.vue";
 
 export default defineComponent({
   name: "Admin_Dashboard",
@@ -214,6 +230,7 @@ export default defineComponent({
     IconCardList,
     IconAddCircle,
     IconNewspaper,
+    IconDocumentText,
   },
 
   props: {

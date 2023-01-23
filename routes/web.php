@@ -1,21 +1,21 @@
 <?php
 
-use Inertia\Inertia;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ApplicationController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\ChatController;
-use App\Http\Controllers\HomeController;
-use App\Http\Controllers\UserController;
-use App\Http\Controllers\WebinarController;
-use App\Http\Controllers\InvitationController;
-use App\Http\Controllers\NewsletterController;
-use App\Http\Controllers\ApplicationController;
-use App\Http\Controllers\WebinarOrderController;
-use App\Http\Controllers\PersonCompanyController;
 use App\Http\Controllers\DashboardAdminController;
-use App\Http\Controllers\NewsletterMemberController;
 use App\Http\Controllers\DashboardCustomerController;
 use App\Http\Controllers\DashboardEmployeeController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\InvitationController;
+use App\Http\Controllers\NewsletterController;
+use App\Http\Controllers\NewsletterMemberController;
+use App\Http\Controllers\PersonCompanyController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\WebinarController;
+use App\Http\Controllers\WebinarOrderController;
+use Illuminate\Support\Facades\Route;
+use Inertia\Inertia;
 
 // --------
 // Homepage
@@ -67,7 +67,6 @@ Route::get('/job_application', [HomeController::class, 'home_job_application'])-
 // Bewerbungsformular Send
 Route::post('/job_application/send', [HomeController::class, 'home_job_application_send'])
     ->name('home.job_application.send');
-
 
 // Anwender nimmt Einladung (invitations) an
 Route::get('/invitation/accept/{slug}', [HomeController::class, 'home_invitation_accept'])
@@ -301,6 +300,12 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
         // Übersicht Dokumentation
         Route::get('/admin/documentation', [DashboardAdminController::class, 'admin_documentation'])
             ->name('admin.documentation');
+        // -------
+        // Version
+        // -------
+        // Übersicht Versions-Dokumentation
+        Route::get('/admin/version', [DashboardAdminController::class, 'admin_version'])
+            ->name('admin.version');
         // =======
         // Profile
         // =======
