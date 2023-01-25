@@ -4,6 +4,8 @@ namespace App\Actions\Fortify;
 
 use App\Models\Team;
 use App\Models\User;
+use App\Models\Country;
+use App\Models\Salutation;
 use App\Models\PersonCompany;
 use Laravel\Jetstream\Jetstream;
 use Illuminate\Support\Facades\DB;
@@ -50,10 +52,10 @@ class CreateNewUser implements CreatesNewUsers
                 $person_company = PersonCompany::create([
                     'name' => $input['company_name'],
                     'street' => $input['company_street'],
-                    'country_id' => 1,
+                    'country_id' => Country::COUNTRY_GERMANY,
                     'postcode' => $input['company_postcode'],
                     'city' => $input['company_city'],
-                    'contactperson_salutation_id' => 0,
+                    'contactperson_salutation_id' => Salutation::SALUTATION_DIVERS,
                     'contactperson_last_name' => $user->first_name,
                     'contactperson_first_name' => $user->last_name,
                     'contactperson_email' => $user->email,

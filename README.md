@@ -2,15 +2,17 @@
 
 ## Bestandteile
 Die Plattform **CodingStarter** besteht aus:
+- Homepage
+- Anwendung für "Administratoren"
+- Anwendung für "Mitarbeiter"
+- Anwendung für "Kunden"
+
+Entwickelt mit:
 - Laravel 9
 - Vue.js 3
 - Inertia
 - Jetstream
 - Tailwind CSS 3
-- Homepage
-- Anwendung für "Administratoren"
-- Anwendung für "Mitarbeiter"
-- Anwendung für "Kunden"
    
 ## Datenmodell
 

@@ -1,5 +1,5 @@
 <template>
-    <homepage-layout header-title="Impressum">
+    <homepage-layout header-title="Impressum" :cookie-consent-display="false">
         <div class="max-w-4xl p-6 mx-auto text-layout-700 dark:text-white bg-layout-50 dark:bg-layout-700 rounded-md shadow-md">
             <markdown :markdown="imprint"></markdown>
         </div>

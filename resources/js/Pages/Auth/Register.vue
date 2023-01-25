@@ -17,6 +17,10 @@ const form = useForm({
   password: "",
   password_confirmation: "",
   terms: false,
+  company_name: "",
+  company_street: "",
+  company_postcode: "",
+  company_city: "",
 });
 
 const submit = () => {
@@ -103,10 +107,10 @@ const submit = () => {
         />
       </div>
 
-           <div class="mt-4">
-        <JetRegisterSubtitle title="Daten zum Unternehmen"
-          ></JetRegisterSubtitle
-        >
+      <div class="mt-4">
+        <JetRegisterSubtitle
+          title="Daten zum Unternehmen"
+        ></JetRegisterSubtitle>
       </div>
 
       <div class="mt-4">
@@ -154,7 +158,6 @@ const submit = () => {
         <JetInputError class="mt-2" :message="form.errors.company_city" />
       </div>
 
-
       <div
         v-if="$page.props.jetstream.hasTermsAndPrivacyPolicyFeature"
         class="mt-4"
@@ -179,7 +182,7 @@ const submit = () => {
               >,
               <a
                 target="_blank"
-                :href="route('policy')"
+                :href="route('privacy')"
                 class="underline text-sm text-layout-600 hover:text-layout-900"
                 >{{ $t("Privacy Policy") }}</a
               >
