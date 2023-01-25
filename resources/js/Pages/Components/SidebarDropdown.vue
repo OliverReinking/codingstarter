@@ -72,7 +72,7 @@ export default defineComponent({
       hover:bg-layout-900
 
       dark:text-layout-100
-      dark:bg-layout-900
+      dark:bg-layout-700
       dark:hover:text-layout-900
       dark:hover:bg-layout-100
       `
