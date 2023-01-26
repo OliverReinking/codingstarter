@@ -111,19 +111,19 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
         // PersonCompanies
         // ===============
         // Liste der Personen/Unternehmen (person_companies)
-        Route::get('/admin/person_companies/index', [PersonCompanyController::class, 'admin_person_company_index'])
+        Route::get('/admin/person_company/index', [PersonCompanyController::class, 'admin_person_company_index'])
             ->name('admin.person_company.index')->middleware('remember');
         // Display Unternehmen
-        Route::get('/admin/person_companies/show/{person_company}', [PersonCompanyController::class, 'admin_person_company_show'])
+        Route::get('/admin/person_company/show/{person_company}', [PersonCompanyController::class, 'admin_person_company_show'])
             ->name('admin.person_company.show');
         // Edit der Unternehmensdaten
-        Route::get('/admin/person_companies/{person_company}/edit', [PersonCompanyController::class, 'admin_person_company_edit'])
+        Route::get('/admin/person_company/{person_company}/edit', [PersonCompanyController::class, 'admin_person_company_edit'])
             ->name('admin.person_company.edit');
         // Update der Unternehmensdaten
-        Route::put('/admin/person_companies/{person_company}', [PersonCompanyController::class, 'admin_person_company_update'])
+        Route::put('/admin/person_company/{person_company}', [PersonCompanyController::class, 'admin_person_company_update'])
             ->name('admin.person_company.update');
         // Delete Unternehmensdaten
-        Route::delete('/admin/person_companies/{person_company}', [PersonCompanyController::class, 'admin_person_company_delete'])
+        Route::delete('/admin/person_company/{person_company}', [PersonCompanyController::class, 'admin_person_company_delete'])
             ->name('admin.person_company.delete');
         // ==========
         // Teammember
@@ -331,13 +331,13 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
         // PersonCompanies
         // ===============
         // Anzeige der Unternehmensdaten
-        Route::get('/employee/person_companies/show/{person_company}', [PersonCompanyController::class, 'employee_person_company_show'])
+        Route::get('/employee/person_company/show/{person_company}', [PersonCompanyController::class, 'employee_person_company_show'])
             ->name('employee.person_company.show');
         // Edit der Unternehmensdaten
-        Route::get('/employee/person_companies/{person_company}/edit', [PersonCompanyController::class, 'employee_person_company_edit'])
+        Route::get('/employee/person_company/{person_company}/edit', [PersonCompanyController::class, 'employee_person_company_edit'])
             ->name('employee.person_company.edit');
         // Update der Unternehmensdaten
-        Route::put('/employee/person_companies/{person_company}', [PersonCompanyController::class, 'employee_person_company_update'])
+        Route::put('/employee/person_company/{person_company}', [PersonCompanyController::class, 'employee_person_company_update'])
             ->name('employee.person_company.update');
         // ==========
         // Teammember
@@ -412,13 +412,13 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
         // PersonCompanies
         // ===============
         // Anzeige der Unternehmensdaten
-        Route::get('/customer/person_companies/show/{person_company}', [PersonCompanyController::class, 'customer_person_company_show'])
+        Route::get('/customer/person_company/show/{person_company}', [PersonCompanyController::class, 'customer_person_company_show'])
             ->name('customer.person_company.show');
         // Edit der Unternehmensdaten
-        Route::get('/customer/person_companies/{person_company}/edit', [PersonCompanyController::class, 'customer_person_company_edit'])
+        Route::get('/customer/person_company/{person_company}/edit', [PersonCompanyController::class, 'customer_person_company_edit'])
             ->name('customer.person_company.edit');
         // Update der Unternehmensdaten
-        Route::put('/customer/person_companies/{person_company}', [PersonCompanyController::class, 'customer_person_company_update'])
+        Route::put('/customer/person_company/{person_company}', [PersonCompanyController::class, 'customer_person_company_update'])
             ->name('customer.person_company.update');
         // ==========
         // Teammember

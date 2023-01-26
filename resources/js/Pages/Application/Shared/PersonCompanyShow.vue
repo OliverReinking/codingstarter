@@ -61,7 +61,7 @@
 
     <div v-if="!personCompany.is_natural_person">
       <display-title>Unternehmensname, Anschrift und Mailadresse</display-title>
-      <display-row label="Unternehmenssame">
+      <display-row label="Unternehmensname">
         <template #content>
           {{ personCompany.name }}
         </template>

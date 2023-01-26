@@ -4,9 +4,7 @@ Das verwendete Datenmodell besteht aus den folgenden Tabellen:
 
 ## administrations
 - admin_id
-
-### Verknüpfungen
-administrations.admin_id = person_companies.id
+  - Verweis auf person_companies
 
 ## blogs
 - id
@@ -72,6 +70,12 @@ blog_images.id = blogs.blog_image_id
 - id
 - name
 
+| id  | name          |
+| --- | ------------- |
+| 1   | Kunde         |
+| 2   | Unternehmen   |
+| 3   | Administrator |
+
 ## companies
 - company_id
 
@@ -84,14 +88,17 @@ companies.company_id = person_companies.id
 
 ## customers
 - customer_id
+- company_id
 
 ### Verknüpfungen
-customers.customer_id = person_companies.id (zugehörige Person/Unternehmen des Anwenders)
-customers.customer_id = customers.customer_id (zugehöriges Unternehmen des Anwenders)
+- customers.customer_id = person_companies.id (zugehörige Person/Unternehmen des Kunden)
+- customers.company_id = person_companies.id (zugehöriges Unternehmen, welches den Kunden "betreut")
 
 ### Hinweise
-Jeder Kunde (customers) hat einen zugehörigen Datensatz in Person/Unternehmen (person_companies).  
-Jeder Kunde (customers) gehört zu einem Unternehmen (companies).  
+- jeder Kunde (customers) hat einen zugehörigen Datensatz in Person/Unternehmen (person_companies)
+- jeder Kunde (customers) gehört zu einem Unternehmen (companies)  
+  - d.h. hier, dass der Kunde (customers) vom Unternehmen (companies) betreut wird.
+  - das Attribut customers.company_id auch ein Verweis auf companies
 
 Bei einer Registrierung von der Homepage wird ein neuer Anwender automatisch zum Unternehmen mit der Id 1.000 zugeordnet. 
 Vergleiche hierzu CreateNewUser.php.  
@@ -162,6 +169,12 @@ newsletter_members.newsletter_id = newsletters.id (Jedes Newslettermitglied (new
 ## salutations
 - id
 - name
+
+| id  | name    |
+| --- | ------- |
+| 1   | Herr    |
+| 2   | Frau    |
+| 3   | Weitere |
 
 
 ## users

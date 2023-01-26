@@ -12,7 +12,7 @@
 
     <page-title> Anzeige Person bzw. des Unternehmens </page-title>
 
-     <!-- Anzeige der Person bzw. des Unternehmes -->
+     <!-- Anzeige der Person bzw. des Unternehmens -->
     <section-content :full-width="true">
       <template #content>
         <person-company-show
