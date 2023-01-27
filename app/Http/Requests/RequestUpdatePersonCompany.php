@@ -60,7 +60,7 @@ class RequestUpdatePersonCompany extends FormRequest
             'bankconnection_iban.required'          => 'Bitte gebe die IBAN-Nr ein.',
             'bankconnection_iban.max'               => 'Für die Eingabe der IBAN-Nr stehen maximal 35 Zeichen zur Verfügung.',
             'bankconnection_accountholder.required' => 'Bitte gebe den Kontoinhaber ein.',
-            'bankconnection_accountholder.max'      => 'Für die Eingabe des Kontoinhabers stehen maximal 50 Zeichen zur Verfügung.',
+            'bankconnection_accountholder.max'      => 'Für die Eingabe des Kontoinhabers stehen maximal 30 Zeichen zur Verfügung.',
             //
             'contactperson_first_name.max'          => 'Für die Eingabe des Vornamens des Kunden stehen maximal 100 Zeichen zur Verfügung.',
             'contactperson_last_name.max'           => 'Für die Eingabe des Nachnamens des Kunden stehen maximal 100 Zeichen zur Verfügung.',

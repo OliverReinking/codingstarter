@@ -13,7 +13,7 @@
       border border-layout-300
       focus:ring-blue-500 focus:border-blue-500
       dark:bg-layout-700
-      dark:border-layout-600
+      dark:border-layout-400
       dark:placeholder-layout-400
       dark:text-white
       dark:focus:ring-blue-500

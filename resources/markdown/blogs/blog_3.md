@@ -148,7 +148,6 @@ newsletter_members.newsletter_id = newsletters.id (Jedes Newslettermitglied (new
 - country_id
 - postcode
 - city
-- email
 - contactperson_salutation_id
 - contactperson_first_name
 - contactperson_last_name

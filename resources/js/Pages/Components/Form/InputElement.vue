@@ -13,8 +13,8 @@
       text-layout-900
       bg-layout-50
       border-layout-300
-      placeholder-layout-600
-      autofill:bg-layout-600
+      placeholder-layout-400
+      autofill:bg-layout-400
       focus:ring-sunprimary
       focus:border-sunprimary
 

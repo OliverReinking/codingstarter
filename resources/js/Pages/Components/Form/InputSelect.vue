@@ -10,7 +10,7 @@
       text-layout-900
       bg-layout-50
       border-layout-300
-      placeholder-layout-600
+      placeholder-layout-400
       focus:ring-sunprimary focus:border-sunprimary
       dark:bg-layout-700
       dark:text-white
