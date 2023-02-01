@@ -76,7 +76,7 @@ module.exports = {
                 "on-nightsecondary-darker": "#111827",
             },
             fontFamily: {
-                sans: ["Inter", ...defaultTheme.fontFamily.sans],
+                sans: ['Inter', ...defaultTheme.fontFamily.sans],
                 logo: ['Inter', ...defaultTheme.fontFamily.sans],
                 title: ['Inter', ...defaultTheme.fontFamily.sans],
             },

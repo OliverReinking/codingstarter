@@ -9,11 +9,9 @@ class ChatUserType extends Model
 {
     use HasFactory;
 
-    const ChatUserType_Customer  = 1;
-    const ChatUserType_Company = 2;
-    const ChatUserType_Administrator = 3;
-
-    const ChatType_normaleNachricht = 1;
+    const CHATUSERTYPE_CUSTOMER  = 1;
+    const CHATUSERTYPE_COMPANY = 2;
+    const CHATUSERTYPE_ADMINITRATOR = 3;
 
     protected $guarded = [];
 }

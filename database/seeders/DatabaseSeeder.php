@@ -412,7 +412,7 @@ class CreateChatTypes extends Seeder
         ChatType::truncate();
         // Create ChatType
         ChatType::create([
-            'id' => ChatType::ChatType_normaleNachricht,
+            'id' => ChatType::CHATTYPE_NORMALE_NACHRICHT,
             'name' => 'normale Chat-Nachricht',
         ]);
     }
@@ -425,17 +425,17 @@ class CreateChatUserTypes extends Seeder
         ChatUserType::truncate();
         // Create ChatUserType
         ChatUserType::create([
-            'id' => ChatUserType::ChatUserType_Customer,
+            'id' => ChatUserType::CHATUSERTYPE_CUSTOMER,
             'name' => 'Kunde',
         ]);
         // Create ChatUserType
         ChatUserType::create([
-            'id' => ChatUserType::ChatUserType_Company,
+            'id' => ChatUserType::CHATUSERTYPE_COMPANY,
             'name' => 'Unternehmen',
         ]);
         // Create ChatUserType
         ChatUserType::create([
-            'id' => ChatUserType::ChatUserType_Administrator,
+            'id' => ChatUserType::CHATUSERTYPE_ADMINITRATOR,
             'name' => 'Administrator',
         ]);
     }

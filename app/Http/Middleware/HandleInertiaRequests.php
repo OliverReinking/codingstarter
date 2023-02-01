@@ -116,7 +116,7 @@ class HandleInertiaRequests extends Middleware
                     if ($is_admin && $admin_id > 0) {
                         // Anzahl der ungelesenen Chat-Nachrichten an die Administrierung
                         $unreadAdminChats = Chat::where('receiver_person_company_id', '=', $admin_id)
-                            ->where('receiver_user_type_id', '=', ChatUserType::ChatUserType_Administrator)
+                            ->where('receiver_user_type_id', '=', ChatUserType::CHATUSERTYPE_ADMINITRATOR)
                             ->where('read_status', '=', false)
                             ->count();
                     }
@@ -124,7 +124,7 @@ class HandleInertiaRequests extends Middleware
                     if ($is_employee && $company_id > 0) {
                         // Anzahl der ungelesenen Chat-Nachrichten an das Unternehmen
                         $unreadCompanyChats = Chat::where('receiver_person_company_id', '=', $company_id)
-                            ->where('receiver_user_type_id', '=', ChatUserType::ChatUserType_Company)
+                            ->where('receiver_user_type_id', '=', ChatUserType::CHATUSERTYPE_COMPANY)
                             ->where('read_status', '=', false)
                             ->count();
                     }
@@ -132,7 +132,7 @@ class HandleInertiaRequests extends Middleware
                     if ($is_customer && $customer_id > 0) {
                         // Anzahl der ungelesenen Chat-Nachrichten an den Kunden
                         $unreadCustomerChats = Chat::where('receiver_person_company_id', '=', $customer_id)
-                            ->where('receiver_user_type_id', '=', ChatUserType::ChatUserType_Customer)
+                            ->where('receiver_user_type_id', '=', ChatUserType::CHATUSERTYPE_CUSTOMER)
                             ->where('read_status', '=', false)
                             ->count();
                     }

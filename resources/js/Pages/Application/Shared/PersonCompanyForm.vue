@@ -210,7 +210,7 @@
               :required="true"
               ref="billing_street"
             ></input-element>
-            <input-error :message="errors.street" />
+            <input-error :message="errors.billing_street" />
           </input-container>
           <input-container>
             <input-label name="billing_country_id" label="Land"></input-label>

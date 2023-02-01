@@ -12,8 +12,8 @@ class Chat extends Model
 {
     use HasFactory;
 
-    const Chat_mit_Mailbenachrichtung = true;
-    const Chat_ohne_Mailbenachrichtung = false;
+    const CHAT_MIT_MAILBENACHRICHTIGUNG = true;
+    const CHAT_OHNE_MAILBENACHRICHTIGUNG = false;
 
     protected $guarded = [];
 

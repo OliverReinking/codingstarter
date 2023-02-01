@@ -28,7 +28,7 @@ class ChatController extends Controller
         $chats = ChatController::determineChatList(
             $filter_read,
             true,
-            ChatUserType::ChatUserType_Administrator,
+            ChatUserType::CHATUSERTYPE_ADMINITRATOR,
             $admin_id
         );
         //
@@ -54,14 +54,14 @@ class ChatController extends Controller
         //
         $admin_id = $user->admin_id;
         //
-        Chat::readChat($chat, $admin_id, ChatUserType::ChatUserType_Administrator);
+        Chat::readChat($chat, $admin_id, ChatUserType::CHATUSERTYPE_ADMINITRATOR);
         //
         $other_company_id = Chat::determineOtherComapny($admin_id, $chat);
         //
         $chatData = Chat::determineChatData($chat);
         //
         $chathistory = Chat::determineChatHistory(
-            ChatUserType::ChatUserType_Administrator,
+            ChatUserType::CHATUSERTYPE_ADMINITRATOR,
             $admin_id,
             $other_company_id
         );
@@ -86,7 +86,7 @@ class ChatController extends Controller
         $chats = ChatController::determineChatList(
             "all",
             false,
-            ChatUserType::ChatUserType_Administrator,
+            ChatUserType::CHATUSERTYPE_ADMINITRATOR,
             $admin_id
         );
         //
@@ -107,7 +107,7 @@ class ChatController extends Controller
         $chatData = Chat::determineChatData($chat);
         //
         $chathistory = Chat::determineChatHistory(
-            ChatUserType::ChatUserType_Administrator,
+            ChatUserType::CHATUSERTYPE_ADMINITRATOR,
             $admin_id,
             $other_company_id
         );
@@ -139,7 +139,7 @@ class ChatController extends Controller
         $chats = ChatController::determineChatList(
             $filter_read,
             true,
-            ChatUserType::ChatUserType_Company,
+            ChatUserType::CHATUSERTYPE_COMPANY,
             $company_id
         );
         //
@@ -165,14 +165,14 @@ class ChatController extends Controller
         //
         $company_id = $user->company_id;
         //
-        Chat::readChat($chat, $company_id, ChatUserType::ChatUserType_Company);
+        Chat::readChat($chat, $company_id, ChatUserType::CHATUSERTYPE_COMPANY);
         //
         $other_company_id = Chat::determineOtherComapny($company_id, $chat);
         //
         $chatData = Chat::determineChatData($chat);
         //
         $chathistory = Chat::determineChatHistory(
-            ChatUserType::ChatUserType_Company,
+            ChatUserType::CHATUSERTYPE_COMPANY,
             $company_id,
             $other_company_id
         );
@@ -197,7 +197,7 @@ class ChatController extends Controller
         $chats = ChatController::determineChatList(
             "all",
             false,
-            ChatUserType::ChatUserType_Company,
+            ChatUserType::CHATUSERTYPE_COMPANY,
             $company_id
         );
         //
@@ -218,7 +218,7 @@ class ChatController extends Controller
         $chatData = Chat::determineChatData($chat);
         //
         $chathistory = Chat::determineChatHistory(
-            ChatUserType::ChatUserType_Company,
+            ChatUserType::CHATUSERTYPE_COMPANY,
             $company_id,
             $other_company_id
         );
@@ -250,7 +250,7 @@ class ChatController extends Controller
         $chats = ChatController::determineChatList(
             $filter_read,
             true,
-            ChatUserType::ChatUserType_Customer,
+            ChatUserType::CHATUSERTYPE_CUSTOMER,
             $customer_id
         );
         //
@@ -276,14 +276,14 @@ class ChatController extends Controller
         //
         $customer_id = $user->customer_id;
         //
-        Chat::readChat($chat, $customer_id, ChatUserType::ChatUserType_Customer);
+        Chat::readChat($chat, $customer_id, ChatUserType::CHATUSERTYPE_CUSTOMER);
         //
         $other_company_id = Chat::determineOtherComapny($customer_id, $chat);
         //
         $chatData = Chat::determineChatData($chat);
         //
         $chathistory = Chat::determineChatHistory(
-            ChatUserType::ChatUserType_Customer,
+            ChatUserType::CHATUSERTYPE_CUSTOMER,
             $customer_id,
             $other_company_id
         );
@@ -308,7 +308,7 @@ class ChatController extends Controller
         $chats = ChatController::determineChatList(
             "all",
             false,
-            ChatUserType::ChatUserType_Customer,
+            ChatUserType::CHATUSERTYPE_CUSTOMER,
             $customer_id
         );
         //
@@ -329,7 +329,7 @@ class ChatController extends Controller
         $chatData = Chat::determineChatData($chat);
         //
         $chathistory = Chat::determineChatHistory(
-            ChatUserType::ChatUserType_Customer,
+            ChatUserType::CHATUSERTYPE_CUSTOMER,
             $customer_id,
             $other_company_id
         );

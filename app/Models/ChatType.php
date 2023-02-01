@@ -9,7 +9,7 @@ class ChatType extends Model
 {
     use HasFactory;
 
-    Const ChatType_normaleNachricht = 1;
+    Const CHATTYPE_NORMALE_NACHRICHT = 1;
 
     protected $guarded = [];
 
