@@ -24,6 +24,22 @@ class Chat extends Model
         'read_date' => 'datetime',
     ];
 
+    public function getChatDateAttribute($value)
+    {
+        if ($value == null) {
+            return null;
+        }
+        return Carbon::parse($value)->format('Y-m-d H:i');
+    }
+
+    public function getReadDateAttribute($value)
+    {
+        if ($value == null) {
+            return null;
+        }
+        return Carbon::parse($value)->format('Y-m-d H:i');
+    }
+
     // Ein Chat (chats) gehört zu genau einem Sender-Anwender (users)
     public function sender_user()
     {

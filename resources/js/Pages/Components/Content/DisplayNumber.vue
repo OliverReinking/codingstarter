@@ -2,8 +2,8 @@
   <span
     >{{ displaynumber }}
     <span v-if="valueUnit && value != null && value != undefined" :class="valueUnitClass">
-      <span v-if="value == 1">{{ valueSingleUnit }}</span>
-      <span v-else>{{ valueUnit }}</span>
+      <span v-if="value == 1">&nbsp;{{ valueSingleUnit }}</span>
+      <span v-else>&nbsp;{{ valueUnit }}</span>
     </span></span
   >
 </template>
