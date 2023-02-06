@@ -69,7 +69,6 @@
 import { Link } from "@inertiajs/inertia-vue3";
 
 import DisplayDate from "@/Pages/Components/Content/DisplayDate.vue";
-import DisplayNumber from "@/Pages/Components/Content/DisplayNumber.vue";
 
 export default {
   name: "Shared_WebinarPreviewSmall",
@@ -77,7 +76,6 @@ export default {
   components: {
     Link,
     DisplayDate,
-    DisplayNumber,
   },
 
   props: {

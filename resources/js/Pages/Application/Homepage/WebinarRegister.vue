@@ -24,6 +24,13 @@
 
         <h2 class="mt-8 text-xl font-semibold">Webinar "{{ webinar.title }}"</h2>
 
+          <div class="my-4 text-base text-layout-600 dark:text-layout-300">
+          Veranstaltungsdatum:
+          <display-date :value="webinar.event_date" :time-on="false" />
+          um
+          <span>{{ webinar.event_start }}</span>
+        </div>
+
         <form class="mt-4">
           <!-- Liste der Fehler -->
           <error-list :errors="errors" />
@@ -150,6 +157,8 @@ import InputError from "@/Pages/Components/Form/InputError.vue";
 
 import Markdown from "@/Pages/Components/Content/Markdown.vue";
 
+import DisplayDate from "@/Pages/Components/Content/DisplayDate.vue";
+
 export default defineComponent({
   name: "Homepage_WebinarRegister",
 
@@ -170,6 +179,7 @@ export default defineComponent({
     InputTextarea,
     InputError,
     Markdown,
+    DisplayDate
   },
 
   props: {

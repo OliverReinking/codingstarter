@@ -23,8 +23,6 @@
 <script>
 import { defineComponent } from "vue";
 
-import { Link } from "@inertiajs/inertia-vue3";
-
 import EmployeeLayout from "@/Pages/Application/Employee/Shared/Layout.vue";
 import Breadcrumb from "@/Pages/Components/Breadcrumb.vue";
 
@@ -36,7 +34,6 @@ export default defineComponent({
   name: "Employee_NoPermission",
 
   components: {
-    Link,
     EmployeeLayout,
     Breadcrumb,
     PageTitle,

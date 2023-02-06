@@ -23,8 +23,6 @@
 <script>
 import { defineComponent } from "vue";
 
-import { Link } from "@inertiajs/inertia-vue3";
-
 import CustomerLayout from "@/Pages/Application/Customer/Shared/Layout.vue";
 import Breadcrumb from "@/Pages/Components/Breadcrumb.vue";
 
@@ -36,7 +34,6 @@ export default defineComponent({
   name: "Customer_NoPermission",
 
   components: {
-    Link,
     CustomerLayout,
     Breadcrumb,
     PageTitle,
