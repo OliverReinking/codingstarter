@@ -13,7 +13,7 @@ class DashboardCustomerController extends Controller
         return Inertia::render('Application/Customer/Dashboard');
     }
     //
-    public function customer_no_permission($message)
+    public function customer_no_permission($message = null)
     {
         return Inertia::render('Application/Customer/NoPermission', [
             'message' => $message

@@ -13,7 +13,7 @@ class DashboardEmployeeController extends Controller
         return Inertia::render('Application/Employee/Dashboard');
     }
     //
-    public function employee_no_permission($message)
+    public function employee_no_permission($message = null)
     {
         return Inertia::render('Application/Employee/NoPermission', [
             'message' => $message

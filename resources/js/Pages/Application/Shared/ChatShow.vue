@@ -79,7 +79,7 @@
             :company-id="chat.receiver_person_company_id"
             :company-name="chat.receiver_person_company_name"
             :type-id="chat.receiver_user_type_id"
-            :type-name="chat.sender_type_name"
+            :type-name="chat.receiver_type_name"
           ></chat-sender-receiver-info>
         </div>
       </template>
