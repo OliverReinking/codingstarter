@@ -8,7 +8,7 @@ Die Plattform **CodingStarter** besteht aus:
 - Anwendung für "Kunden"
 
 Entwickelt mit:
-- Laravel 9
+- Laravel 10
 - Vue.js 3
 - Inertia
 - Jetstream
