@@ -56,8 +56,8 @@ class CreateNewUser implements CreatesNewUsers
                     'postcode' => $input['company_postcode'],
                     'city' => $input['company_city'],
                     'contactperson_salutation_id' => Salutation::SALUTATION_DIVERS,
-                    'contactperson_last_name' => $user->first_name,
-                    'contactperson_first_name' => $user->last_name,
+                    'contactperson_first_name' => $user->first_name,
+                    'contactperson_last_name' => $user->last_name,
                     'contactperson_email' => $user->email,
                 ]);
                 // create customers
