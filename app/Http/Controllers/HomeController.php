@@ -210,6 +210,8 @@ class HomeController extends Controller
 
     public function home_blog_index()
     {
+        $Zeitpunkt = Carbon::now();
+        //
         $blogs = Blog::select(
             'blogs.id as id',
             'blogs.blog_date as blog_date',
@@ -225,6 +227,8 @@ class HomeController extends Controller
             ->join('blog_authors', 'blog_authors.id', '=', 'blogs.blog_author_id')
             ->join('blog_images', 'blog_images.id', '=', 'blogs.blog_image_id')
             ->join('blog_categories', 'blog_categories.id', '=', 'blogs.blog_category_id')
+            //
+            ->whereDate('blog_date', '<=', $Zeitpunkt)
             //
             ->filterBlog(Request::only('search'))
             ->orderBy('blogs.blog_date', 'desc')
