@@ -2,11 +2,11 @@
 
 namespace App\Models;
 
-use Carbon\Carbon;
-use Illuminate\Support\Str;
 use App\Jobs\SendMailNewChat;
-use Illuminate\Database\Eloquent\Model;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 
 class Chat extends Model
 {
@@ -126,24 +126,24 @@ class Chat extends Model
             'chat_date',
             'message',
             'read_status',
-            'read_date'
+            'read_date',
         ])
             ->leftJoin('users as sender_user', 'sender_user.id', '=', 'chats.sender_user_id')
             ->leftJoin('person_companies as sender_person_company', 'sender_person_company.id', '=', 'chats.sender_person_company_id')
-            //
+        //
             ->leftJoin('users as receiver_user', 'receiver_user.id', '=', 'chats.receiver_user_id')
             ->leftJoin('person_companies as receiver_person_company', 'receiver_person_company.id', '=', 'chats.receiver_person_company_id')
-            // ----------------------------
-            // Sender my and Receiver other
-            // ----------------------------
+        // ----------------------------
+        // Sender my and Receiver other
+        // ----------------------------
             ->where(function ($q) use ($my_company_id, $my_chat_type, $other_company_id) {
                 $q->where('receiver_user_type_id', '=', $my_chat_type);
                 $q->where('receiver_person_company_id', '=', $my_company_id);
                 $q->where('sender_person_company_id', '=', $other_company_id);
             })
-            // ----------------------------
-            // Sender my and Receiver other
-            // ----------------------------
+        // ----------------------------
+        // Sender my and Receiver other
+        // ----------------------------
             ->orWhere(function ($q) use ($my_company_id, $my_chat_type, $other_company_id) {
                 $q->where('sender_user_type_id', '=', $my_chat_type);
                 $q->where('sender_person_company_id', '=', $my_company_id);
@@ -231,7 +231,7 @@ class Chat extends Model
             // versende Mail MailNewChat
             // -------------------------
             // ermittle Sender-Unternehmen
-            $sender_company = PersonCompany::Find($receiver_person_company_id);
+            $sender_company = PersonCompany::Find($sender_person_company_id);
             // ermittle Empfänger-Unternehmen
             $receiver_company = PersonCompany::Find($receiver_person_company_id);
             //
@@ -239,13 +239,15 @@ class Chat extends Model
                 // Ermittle die chat_values
                 $chat_values = collect();
                 //
-                $chat_values->sender_email = $sender_company->email;
+                $chat_values->sender_email = $sender_company->contactperson_email;
                 $chat_values->sender_name = $sender_company->name;
                 //
-                $chat_values->receiver_email = $receiver_company->email;
+                $chat_values->receiver_email = $receiver_company->contactperson_email;
                 $chat_values->receiver_name = $receiver_company->name;
                 //
-                dispatch(new SendMailNewChat($chat_values));
+                if ($chat_values->sender_email && $chat_values->receiver_emai) {
+                    dispatch(new SendMailNewChat($chat_values));
+                }
             }
         }
         //
