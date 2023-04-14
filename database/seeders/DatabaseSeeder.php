@@ -76,8 +76,8 @@ class AdminSeeder extends Seeder
             'name' => 'Codingjungle',
             'country_id' => Country::COUNTRY_GERMANY,
             'contactperson_salutation_id' => Salutation::SALUTATION_MALE,
-            'contactperson_last_name' => 'Oliver',
-            'contactperson_first_name' => 'Reinking',
+            'contactperson_first_name' => 'Oliver',
+            'contactperson_last_name' => 'Reinking',
             'contactperson_email' => 'oliver@codingjungle.de',
             'billing_address' => 'Oliver Reinking',
             'billing_street' => 'Nordpfad 25',
@@ -582,8 +582,8 @@ class TestData extends Seeder
                 $person_company = PersonCompany::factory()->create([
                     'is_natural_person' => false,
                     'contactperson_salutation_id' => 1,
-                    'contactperson_last_name' => $user->first_name,
-                    'contactperson_first_name' => $user->last_name,
+                    'contactperson_first_name' => $user->first_name,
+                    'contactperson_last_name' => $user->last_name,
                     'contactperson_email' => $user->email,
                 ]);
                 //

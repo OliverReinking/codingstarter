@@ -245,7 +245,7 @@ class Chat extends Model
                 $chat_values->receiver_email = $receiver_company->contactperson_email;
                 $chat_values->receiver_name = $receiver_company->name;
                 //
-                if ($chat_values->sender_email && $chat_values->receiver_emai) {
+                if ($chat_values->sender_email && $chat_values->receiver_email) {
                     dispatch(new SendMailNewChat($chat_values));
                 }
             }
