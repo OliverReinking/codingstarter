@@ -21,7 +21,7 @@ class RequestJobApplication extends FormRequest
         $rules['email'] = ['required', 'email'];
         $rules['phone'] = ['required', 'max:50'];
         $rules['birthday'] = ['nullable', 'date'];
-        $rules['gender'] = ['in:female,male'];
+        $rules['gender'] = ['in:female,male,divers'];
         $rules['continent'] = ['in:Africa,Antarctica,Asia,Australia/Ocenia,Europe,North America,South America'];
         $rules['fileCurriculumVitae'] = ['required', 'file'];
         $rules['languages'] = [new Language];

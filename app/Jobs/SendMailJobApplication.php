@@ -25,7 +25,7 @@ class SendMailJobApplication implements ShouldQueue
     public function handle()
     {
         $email = new MailJobApplication($this->job_application_values);
-        Mail::to(config('newspilot.mail.job_application'))
+        Mail::to(config('codingstarter.mail.job_application'))
             ->send($email);
     }
 }

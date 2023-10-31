@@ -2,26 +2,28 @@
 
 namespace Database\Seeders;
 
-use App\Models\Administration;
+use Carbon\Carbon;
 use App\Models\Blog;
-use App\Models\BlogAuthor;
-use App\Models\BlogCategory;
-use App\Models\BlogImage;
 use App\Models\Chat;
-use App\Models\ChatType;
-use App\Models\ChatUserType;
+use App\Models\User;
 use App\Models\Company;
 use App\Models\Country;
-use App\Models\Customer;
-use App\Models\Newsletter;
-use App\Models\NewsletterMember;
-use App\Models\PersonCompany;
-use App\Models\Salutation;
-use App\Models\User;
 use App\Models\Webinar;
+use App\Models\ChatType;
+use App\Models\Customer;
+use App\Models\Employee;
+use App\Models\BlogImage;
+use App\Models\BlogAuthor;
+use App\Models\Newsletter;
+use App\Models\Salutation;
+use App\Models\BlogCategory;
+use App\Models\ChatUserType;
 use App\Models\WebinarImage;
-use Carbon\Carbon;
+use App\Models\PersonCompany;
+use App\Models\Administration;
 use Illuminate\Database\Seeder;
+use App\Models\NewsletterMember;
+use Database\Seeders\CountrySeeder;
 use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
@@ -48,7 +50,7 @@ class DatabaseSeeder extends Seeder
             $this->call(CreateBlogWithMarkdownFormat::class);
             $this->call(CreateChatTypes::class);
             $this->call(CreateChatUserTypes::class);
-            $this->call(CreateCountries::class);
+            $this->call(CountrySeeder::class);
             $this->call(CreateSalutations::class);
             $this->call(NewsletterData::class);
         }
@@ -70,7 +72,12 @@ class AdminSeeder extends Seeder
             'is_employee' => true,
             'is_customer' => true,
         ]);
-        //
+        // Create Employee
+        $employee = Employee::create([
+            'user_id' => $user->id,
+            'api_token' => hash('sha256', 'YHEt7CNf1SBmQs6JbTPf7qMK8FgnynI5SiPmyJELrbAO61heKy0eKuiXrxBJ'),
+        ]);
+        // Create PersonCompany
         $person_company = PersonCompany::create([
             'is_natural_person' => false,
             'name' => 'Codingjungle',
@@ -125,114 +132,6 @@ class CreateSalutations extends Seeder
         Salutation::create([
             'id' => 3,
             'name' => 'Weitere',
-        ]);
-    }
-}
-
-class CreateCountries extends Seeder
-{
-    public function run()
-    {
-        Country::truncate();
-        // Create Country
-        Country::create([
-            'id' => 1,
-            'name' => 'Deutschland',
-        ]);
-        // Create Country
-        Country::create([
-            'id' => 2,
-            'name' => 'Frankreich',
-        ]);
-        // Create Country
-        Country::create([
-            'id' => 3,
-            'name' => 'Schweiz',
-        ]);
-        // Create Country
-        Country::create([
-            'id' => 4,
-            'name' => 'Dänemark',
-        ]);
-        // Create Country
-        Country::create([
-            'id' => 5,
-            'name' => 'Niederlande',
-        ]);
-        // Create Country
-        Country::create([
-            'id' => 6,
-            'name' => 'Belgien',
-        ]);
-        // Create Country
-        Country::create([
-            'id' => 7,
-            'name' => 'Italien',
-        ]);
-        // Create Country
-        Country::create([
-            'id' => 8,
-            'name' => 'Polen',
-        ]);
-        // Create Country
-        Country::create([
-            'id' => 9,
-            'name' => 'Spanien',
-        ]);
-        // Create Country
-        Country::create([
-            'id' => 10,
-            'name' => 'Portugal',
-        ]);
-        // Create Country
-        Country::create([
-            'id' => 11,
-            'name' => 'Monaco',
-        ]);
-        // Create Country
-        Country::create([
-            'id' => 12,
-            'name' => 'Österreich',
-        ]);
-        // Create Country
-        Country::create([
-            'id' => 13,
-            'name' => 'Griechenland',
-        ]);
-        // Create Country
-        Country::create([
-            'id' => 14,
-            'name' => 'Finnland',
-        ]);
-        // Create Country
-        Country::create([
-            'id' => 15,
-            'name' => 'Luxemburg',
-        ]);
-        // Create Country
-        Country::create([
-            'id' => 16,
-            'name' => 'Liechtenstein',
-        ]);
-        // Create Country
-        Country::create([
-            'id' => 17,
-            'name' => 'Vereinigtes Königreich',
-        ]);
-        // Create Country
-        Country::create([
-            'id' => 18,
-            'name' => 'Irland',
-        ]);
-        // Create Country
-        Country::create([
-            'id' => 19,
-            'name' => 'Tschechien',
-        ]);
-        // Create Country
-        Country::create([
-            'id' => 20,
-            'name' => 'Türkei',
         ]);
     }
 }

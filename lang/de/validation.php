@@ -184,7 +184,7 @@ return [
         'result_text_under_image'  => 'ergebnistext unter bild',
         'role'                     => 'rolle',
         'second'                   => 'sekunde',
-        'sex'                      => 'geschlecht',
+        'sex'                      => 'Geschlecht',
         'short_text'               => 'kurzer text',
         'size'                     => 'größe',
         'state'                    => 'bundesland',

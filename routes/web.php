@@ -1,21 +1,22 @@
 <?php
 
-use App\Http\Controllers\ApplicationController;
+use Inertia\Inertia;
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\ChatController;
-use App\Http\Controllers\DashboardAdminController;
-use App\Http\Controllers\DashboardCustomerController;
-use App\Http\Controllers\DashboardEmployeeController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\ManualController;
+use App\Http\Controllers\WebinarController;
 use App\Http\Controllers\InvitationController;
 use App\Http\Controllers\NewsletterController;
-use App\Http\Controllers\NewsletterMemberController;
-use App\Http\Controllers\PersonCompanyController;
-use App\Http\Controllers\UserController;
-use App\Http\Controllers\WebinarController;
+use App\Http\Controllers\ApplicationController;
 use App\Http\Controllers\WebinarOrderController;
-use Illuminate\Support\Facades\Route;
-use Inertia\Inertia;
+use App\Http\Controllers\PersonCompanyController;
+use App\Http\Controllers\DashboardAdminController;
+use App\Http\Controllers\NewsletterMemberController;
+use App\Http\Controllers\DashboardCustomerController;
+use App\Http\Controllers\DashboardEmployeeController;
 
 // --------
 // Homepage
@@ -107,6 +108,10 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
             '/admin/dashboard',
             [DashboardAdminController::class, 'admin_index']
         )->name('admin.dashboard');
+        // ======
+        // Manuals
+        // ======
+        Route::get('/manual/{file?}', [ManualController::class, 'manual_admin'])->name('admin.manual');
         // ===============
         // PersonCompanies
         // ===============

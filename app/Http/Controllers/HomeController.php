@@ -2,30 +2,30 @@
 
 namespace App\Http\Controllers;
 
-use Carbon\Carbon;
-use App\Models\Blog;
-use App\Models\User;
-use Inertia\Inertia;
-use App\Models\Webinar;
-use App\Models\Invitation;
-use App\Models\Newsletter;
-use App\Models\Salutation;
-use Illuminate\Support\Str;
-use App\Models\WebinarOrder;
-use App\Models\Administration;
-use App\Models\NewsletterMember;
-use Laravel\Jetstream\Jetstream;
-use Illuminate\Support\Facades\Log;
-use App\Jobs\SendMailJobApplication;
-use Illuminate\Support\Facades\Request;
-use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\Redirect;
 use App\Http\Requests\RegisterUserRequest;
 use App\Http\Requests\RequestJobApplication;
-use App\Http\Requests\RequestWebinarRegister;
-use App\Jobs\SendMailNewsletterWasSubscribed;
 use App\Http\Requests\RequestNewsletterRegister;
+use App\Http\Requests\RequestWebinarRegister;
+use App\Jobs\SendMailJobApplication;
+use App\Jobs\SendMailNewsletterWasSubscribed;
 use App\Jobs\SendMailWebinarRegistrationConfirmation;
+use App\Models\Administration;
+use App\Models\Blog;
+use App\Models\Invitation;
+use App\Models\Newsletter;
+use App\Models\NewsletterMember;
+use App\Models\Salutation;
+use App\Models\User;
+use App\Models\Webinar;
+use App\Models\WebinarOrder;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Request;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
+use Inertia\Inertia;
+use Laravel\Jetstream\Jetstream;
 
 class HomeController extends Controller
 {
@@ -49,9 +49,9 @@ class HomeController extends Controller
             ->join('blog_authors', 'blog_authors.id', '=', 'blogs.blog_author_id')
             ->join('blog_images', 'blog_images.id', '=', 'blogs.blog_image_id')
             ->join('blog_categories', 'blog_categories.id', '=', 'blogs.blog_category_id')
-            //
+        //
             ->whereDate('blog_date', '<=', $Zeitpunkt)
-            //
+        //
             ->orderBy('blogs.blog_date', 'desc')
             ->orderBy('blogs.id', 'desc')
             ->first();
@@ -66,7 +66,7 @@ class HomeController extends Controller
             'webinar_images.name as name'
         )
             ->join('webinar_images', 'webinar_images.id', '=', 'webinars.webinar_image_id')
-            //
+        //
             ->orderBy('webinars.event_date', 'asc')
             ->where('webinars.active', '=', true)
             ->whereDate('event_date', '>', $Zeitpunkt)
@@ -146,10 +146,22 @@ class HomeController extends Controller
         //
         $job_application_values->continent = trans($request->continent);
         //
-        //Log::info('home_job_application_send', [
-        //    'request->continent' => $request->continent,
-        //    'request->languages' => $request->languages
-        //]);
+        $languages = collect($request->languages)
+            ->filter(function ($value) {
+                // Filtere alle Sprachen heraus, die den Wert 'true' haben
+                return $value === 'true';
+            })
+            ->keys() // Extrahiere nur die Schlüssel (also die Sprachnamen)
+            ->toArray(); // Konvertiere das Ergebnis in ein einfaches Array
+
+        // Speichere die Sprachen im $job_application_values-Objekt
+        $job_application_values->languages = $languages;
+        //
+        Log::info('home_job_application_send', [
+            'request->continent' => $request->continent,
+            'request->languages' => $request->languages,
+            'languages' => $languages,
+        ]);
         //
         $count_languages = 0;
         foreach ($request->languages as $key => $value) {
@@ -168,7 +180,7 @@ class HomeController extends Controller
             return Redirect::route('job_application')
                 ->with([
                     'error' => 'Die Bewerbungsdaten konnten nicht verarbeitet werden.
-                  Du solltest mindestens zwei Sprachen beherrschen.'
+                  Du solltest mindestens zwei Sprachen beherrschen.',
                 ]);
         }
         //
@@ -186,7 +198,7 @@ class HomeController extends Controller
                 return Redirect::route('job_application')
                     ->with([
                         'error' => 'Die Bewerbungsdaten konnten nicht verarbeitet werden.
-                          Der Lebenslauf muss im PDF-Format hochgeladen werden.'
+                          Der Lebenslauf muss im PDF-Format hochgeladen werden.',
                     ]);
             }
             //
@@ -204,7 +216,7 @@ class HomeController extends Controller
         return Redirect::route('job_application')
             ->with([
                 'success' => 'Die Bewerbungsdaten wurden erfolgreich übermittelt.
-                          Wir werden uns schnellstmöglich mit Dir in Verbindung setzen.'
+                          Wir werden uns schnellstmöglich mit Dir in Verbindung setzen.',
             ]);
     }
 
@@ -227,9 +239,9 @@ class HomeController extends Controller
             ->join('blog_authors', 'blog_authors.id', '=', 'blogs.blog_author_id')
             ->join('blog_images', 'blog_images.id', '=', 'blogs.blog_image_id')
             ->join('blog_categories', 'blog_categories.id', '=', 'blogs.blog_category_id')
-            //
+        //
             ->whereDate('blog_date', '<=', $Zeitpunkt)
-            //
+        //
             ->filterBlog(Request::only('search'))
             ->orderBy('blogs.blog_date', 'desc')
             ->orderBy('blogs.id', 'desc')
@@ -258,7 +270,7 @@ class HomeController extends Controller
         //
         return Inertia::render('Application/Homepage/BlogShow', [
             'blog' => $blog,
-            'blogarticle' => $blogarticle
+            'blogarticle' => $blogarticle,
         ]);
     }
 
@@ -276,7 +288,7 @@ class HomeController extends Controller
             'webinar_images.name as name'
         )
             ->join('webinar_images', 'webinar_images.id', '=', 'webinars.webinar_image_id')
-            //
+        //
             ->filterWebinar(Request::only('search'))
             ->where('company_id', '=', Administration::ADMIN_CODINGSTARTER_ID)
             ->where('active', '=', true)
@@ -302,7 +314,7 @@ class HomeController extends Controller
         return Inertia::render('Application/Homepage/WebinarRegister', [
             'webinar' => $webinar,
             'salutations' => $salutations,
-            'policy' => $policy
+            'policy' => $policy,
         ]);
     }
 
@@ -343,7 +355,7 @@ class HomeController extends Controller
         $message .= 'Wir senden dir in den nächsten Minuten eine Mail mit den notwendigen Informationen zum Webinar.<br />';
         return Redirect::route('home.webinar.order', $webinar->id)
             ->with([
-                'success' => $message
+                'success' => $message,
             ]);
     }
 
@@ -354,7 +366,7 @@ class HomeController extends Controller
         //
         return Inertia::render('Application/Homepage/NewsletterRegister', [
             'newsletter' => $newsletter,
-            'policy' => $policy
+            'policy' => $policy,
         ]);
     }
 
@@ -389,7 +401,7 @@ class HomeController extends Controller
         $message .= 'Wir senden dir in den nächsten Minuten eine Mail, hier kannst du das Abonnement des Newsletters bestätigen.<br />';
         return Redirect::route('home.newsletter.register', $newsletter->id)
             ->with([
-                'success' => $message
+                'success' => $message,
             ]);
     }
 

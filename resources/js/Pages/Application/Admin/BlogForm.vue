@@ -84,7 +84,7 @@
             <input-error :message="errors.summary" />
           </input-container>
 
-          <input-container :full-width="true">
+           <input-container :full-width="true">
             <input-checkbox name="markdown_on" v-model="form.markdown_on">
               Liegt der Artikel im Markdown-Format vor?</input-checkbox
             >
@@ -126,11 +126,19 @@
 
         <input-subtitle>Audio-Daten</input-subtitle>
         <input-group>
-          <input-container :full-width="true">
+<!--           <input-container :full-width="true">
             <input-checkbox name="audio_on" v-model="form.audio_on">
               Gibt es eine Audiodatei?</input-checkbox
             >
           </input-container>
+ -->
+          <input-container :full-width="true">
+            <input-toggle name="audio_on" v-model="form.audio_on">
+              Liegt der Artikel im Markdown-Format vor?</input-toggle
+            >
+          </input-container>
+
+
           <input-container v-if="form.audio_on">
             <input-label name="audio_url" label="Audio-Dateiname"></input-label>
             <input-element
@@ -265,6 +273,7 @@ import InputContainer from "@/Pages/Components/Form/InputContainer.vue";
 import InputLabel from "@/Pages/Components/Form/InputLabel.vue";
 import InputElement from "@/Pages/Components/Form/InputElement.vue";
 import InputCheckbox from "@/Pages/Components/Form/InputCheckbox.vue";
+import InputToggle from "@/Pages/Components/Form/InputToggle.vue";
 import InputSelect from "@/Pages/Components/Form/InputSelect.vue";
 import InputHtml from "@/Pages/Components/Form/InputHtml.vue";
 import InputError from "@/Pages/Components/Form/InputError.vue";
@@ -294,6 +303,7 @@ export default defineComponent({
     InputLabel,
     InputElement,
     InputCheckbox,
+    InputToggle,
     InputSelect,
     InputHtml,
     InputError,

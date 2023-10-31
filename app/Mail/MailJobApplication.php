@@ -3,9 +3,11 @@
 namespace App\Mail;
 
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
+use Illuminate\Mail\Mailables\Content;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Mail\Mailables\Envelope;
+use Illuminate\Contracts\Queue\ShouldQueue;
 
 class MailJobApplication extends Mailable
 {
@@ -18,16 +20,21 @@ class MailJobApplication extends Mailable
         $this->job_application_values = $job_application_values;
     }
 
-    /**
-     * Build the message.
-     *
-     * @return $this
-     */
-    public function build()
+    public function envelope(): Envelope
     {
-        return $this
-            ->subject('Neue Bewerbung ist eingegangen')
-            ->markdown('emails.home.job_application')
-            ->with('job_application_values', $this->job_application_values);
+        return new Envelope(
+            subject: 'Neue Bewerbung ist eingegangen',
+        );
     }
+
+    {
+        return new Content(
+            view: 'emails.home.job_application',
+            with: [
+                'job_application_values' => $this->job_application_values,
+            ],
+
+        );
+    }
+
 }

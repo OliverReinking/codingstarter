@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Str;
 use Inertia\Inertia;
+use Illuminate\Support\Str;
+use Illuminate\Http\Request;
 use Laravel\Jetstream\Jetstream;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class DashboardAdminController extends Controller
 {
@@ -72,14 +73,23 @@ class DashboardAdminController extends Controller
     //
     public function admin_api_tokens_index(Request $request)
     {
+        $user = Auth::user();
+        $availablePermissions = [];
+        $defaultPermissions = [];
+        //
+        if ($user->is_admin) {
+            $defaultPermissions = ['admin_dashboard'];
+            $availablePermissions = ['admin_dashboard'];
+        }
+        //
         return Jetstream::inertia()->render($request, 'Application/Admin/ApiTokenManager', [
             'tokens' => $request->user()->tokens->map(function ($token) {
                 return $token->toArray() + [
                     'last_used_ago' => optional($token->last_used_at)->diffForHumans(),
                 ];
             }),
-            'availablePermissions' => Jetstream::$permissions,
-            'defaultPermissions' => Jetstream::$defaultPermissions,
+            'availablePermissions' => $availablePermissions,
+            'defaultPermissions' => $defaultPermissions,
         ]);
     }
 }

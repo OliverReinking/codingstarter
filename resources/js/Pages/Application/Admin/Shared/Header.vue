@@ -98,6 +98,14 @@
             </dropdown-link>
 
             <dropdown-link
+              :route-name="route('admin.manual')"
+              target="_blank"
+              :with-route="true"
+            >
+              Handbuch
+            </dropdown-link>
+
+            <dropdown-link
               :route-name="route('admin.api_tokens.index')"
               :with-route="true"
               v-if="$page.props.jetstream.hasApiFeatures"

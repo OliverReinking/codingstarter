@@ -122,7 +122,6 @@ import InputLabel from "@/Pages/Components/Form/InputLabel.vue";
 import InputElement from "@/Pages/Components/Form/InputElement.vue";
 import InputCheckbox from "@/Pages/Components/Form/InputCheckbox.vue";
 import InputSelect from "@/Pages/Components/Form/InputSelect.vue";
-import InputHtml from "@/Pages/Components/Form/InputHtml.vue";
 import InputError from "@/Pages/Components/Form/InputError.vue";
 
 import DialogModal from "@/Pages/Components/DialogModal.vue";
@@ -155,7 +154,6 @@ export default defineComponent({
     InputElement,
     InputCheckbox,
     InputSelect,
-    InputHtml,
     InputError,
     DialogModal,
     Alert,

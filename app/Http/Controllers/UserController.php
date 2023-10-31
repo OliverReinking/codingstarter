@@ -19,6 +19,7 @@ class UserController extends Controller
     // =================
     // APPLICATION ADMIN
     // =================
+
     public function admin_user_index()
     {
         $users = User::select(

@@ -14,10 +14,11 @@ Geschlecht: {{ $job_application_values->gender }}<br>
 Kontinent: {{ $job_application_values->continent }}<br>
 
 ### Sprachen
-Deutsch: {{ $job_application_values->german }}<br>
-Englisch: {{ $job_application_values->english }}<br>
-Französisch: {{ $job_application_values->french }}<br>
-Spanisch: {{ $job_application_values->spanish }}<br>
+<ul>
+    @foreach ($job_application_values->languages as $language)
+        <li>{{ $language }}</li>
+    @endforeach
+</ul>
 
 ## Dein Auftrag
 Bitte beantworte die Bewerbung schnellstmöglich!
